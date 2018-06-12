@@ -121,23 +121,25 @@
     
     // Pan Map
     setTimeout(function () {
-        // polylinePoints.forEach(function(element) {
-            // panView(element[0],element[1]);
-            // console.log(element)
+
+        polylinePoints.forEach(function(element) {
+            var x = panView(element[0],element[1]);
+            console.log(element + x)
 
             // polylinePoints.reduce((promiseChain, arrayItem) =>
             // promiseChain.then(() => panView(arrayItem[0],arrayItem[1])), Promise.resolve());
-        // });
+        });
 
-        const start = async () => {
-            await asyncForEach(polylinePoints, async (arrayItem) => {
-              await waitFor(5100)
-              await panView(arrayItem[0],arrayItem[1])
-              console.log(num)
-            })
-            console.log('Done')
-          }
-          start()
+        // const start = async () => {
+        //     await asyncForEach(polylinePoints, async (arrayItem) => {
+        //       await waitFor(5100)
+        //       await panView(arrayItem[0],arrayItem[1])
+        //       console.log(num)
+        //     })
+
+        //     console.log('Done')
+        //   }
+        //   start()
 
     }, 8000);
 
@@ -147,4 +149,5 @@
             animate: true,
             durationSeconds: 5
         });
+        return true;
     };
