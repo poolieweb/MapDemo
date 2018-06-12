@@ -121,7 +121,7 @@
     
     // Pan Map
     setTimeout(function () {
-        map.setView([53.530568102300002, -2.2654759365], 18, {
+        map.setView([53.530568102300002, -2.2654759365], 1, {
             headingDegrees: 270,
             animate: true,
             durationSeconds: 5
