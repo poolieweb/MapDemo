@@ -122,26 +122,27 @@
     // Pan Map
     setTimeout(function () {
 
-        polylinePoints.forEach(function(element) {
-            var x = panView(element[0],element[1]);
-            console.log(element + x)
-
-            // polylinePoints.reduce((promiseChain, arrayItem) =>
-            // promiseChain.then(() => panView(arrayItem[0],arrayItem[1])), Promise.resolve());
+        var interval = 5500; // how much time should the delay between two iterations be (in milliseconds)?
+        var promise = Promise.resolve();
+        polylinePoints.forEach(function (el) {
+          promise = promise.then(function () {
+            console.log(el);
+            panView(el[0],el[1])
+            return new Promise(function (resolve) {
+              setTimeout(resolve, interval);
+            });
+          });
+        });
+        
+        promise.then(function () {
+          console.log('Loop finished.');
         });
 
-        // const start = async () => {
-        //     await asyncForEach(polylinePoints, async (arrayItem) => {
-        //       await waitFor(5100)
-        //       await panView(arrayItem[0],arrayItem[1])
-        //       console.log(num)
-        //     })
-
-        //     console.log('Done')
-        //   }
-        //   start()
-
     }, 8000);
+
+  
+
+
 
     function panView(lat,lng) {
         map.setView([lat, lng], 18, {
@@ -149,5 +150,4 @@
             animate: true,
             durationSeconds: 5
         });
-        return true;
     };
