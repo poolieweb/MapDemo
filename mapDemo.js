@@ -121,7 +121,12 @@
     
     // Pan Map
     setTimeout(function () {
-        map.setView([53.530568102300002, -2.2654759365], 1, {
+
+        polylinePoints.forEach(function(element) {
+            console.log(element);
+          });
+
+        map.setView([53.530568102300002, -2.2654759365], 18, {
             headingDegrees: 270,
             animate: true,
             durationSeconds: 5
