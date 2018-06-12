@@ -115,21 +115,21 @@
         var callback = displaySearchResults;
         var options = { range: 500, number: 5 };
         poiApi.searchTags([], event.latlng, callback, options);
-    }
+    };
 
     map.on("click", searchPoisAroundClick);
     
     // Pan Map
     setTimeout(function () {
-
         polylinePoints.forEach(function(element) {
-            console.log(element);
-          });
+            panView(element[0],element[1]);
+        });
+    }, 8000);
 
-        map.setView([53.530568102300002, -2.2654759365], 18, {
+    function panView(lat,lng) {
+        map.setView([lat, lng], 18, {
             headingDegrees: 270,
             animate: true,
             durationSeconds: 5
         });
-
-    }, 8000);
+    };
