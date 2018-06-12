@@ -123,6 +123,7 @@
     setTimeout(function () {
         polylinePoints.forEach(function(element) {
             panView(element[0],element[1]);
+            console.log(element)
         });
     }, 8000);
 
