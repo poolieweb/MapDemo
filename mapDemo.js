@@ -125,9 +125,20 @@
             // panView(element[0],element[1]);
             // console.log(element)
 
-            polylinePoints.reduce((promiseChain, arrayItem) =>
-            promiseChain.then(() => panView(arrayItem[0],arrayItem[1])), Promise.resolve());
+            // polylinePoints.reduce((promiseChain, arrayItem) =>
+            // promiseChain.then(() => panView(arrayItem[0],arrayItem[1])), Promise.resolve());
         // });
+
+        const start = async () => {
+            await asyncForEach(polylinePoints, async (arrayItem) => {
+              await waitFor(5100)
+              await panView(arrayItem[0],arrayItem[1])
+              console.log(num)
+            })
+            console.log('Done')
+          }
+          start()
+
     }, 8000);
 
     function panView(lat,lng) {
