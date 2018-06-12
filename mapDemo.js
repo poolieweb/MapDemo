@@ -77,7 +77,7 @@
 
   
     var myStageIcon = L.icon({
-        iconUrl: './images/eyddim7fdetkc9tgplhe.webp',
+        iconUrl: './images/parklife.png',
         iconSize: [400, 160],
         iconAnchor: [200, 80],
         popupAnchor: [-3, -76],
@@ -97,7 +97,6 @@
             results.forEach(function(result) {
                 var marker = L.marker([result["lat"], result["lon"]], {
                    title: result["title"],
-                   elevation: result["height_offset"],
                    iconKey: result["tags"]
                 }).addTo(map);
 
@@ -119,6 +118,7 @@
     }
 
     map.on("click", searchPoisAroundClick);
+    
     // Pan Map
     setTimeout(function () {
         map.setView([53.530568102300002, -2.2654759365], 18, {
