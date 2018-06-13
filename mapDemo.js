@@ -150,4 +150,5 @@
             animate: true,
             durationSeconds: 5
         });
+        map.setCameraTiltDegrees(20);
     };
