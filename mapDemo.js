@@ -7,7 +7,7 @@
     });
 
     //Static location of the GPS device (Demo only in this POC)
-    L.circle([53.5339, -2.2552], { color: 'red', radius: 50.0 }).addTo(map);
+    L.circle([53.5339, -2.2552], { color: 'red', radius: 25.0 }).addTo(map);
 
     var myIconMarker = L.icon({
         iconUrl: './images/map-marker.png',
@@ -117,28 +117,28 @@
         poiApi.searchTags([], event.latlng, callback, options);
     };
 
-    map.on("click", searchPoisAroundClick);
+    // map.on("click", searchPoisAroundClick);
     
     // Pan Map
-    setTimeout(function () {
+    // setTimeout(function () {
 
-        var interval = 5500; // how much time should the delay between two iterations be (in milliseconds)?
-        var promise = Promise.resolve();
-        polylinePoints.forEach(function (el) {
-          promise = promise.then(function () {
-            console.log(el);
-            panView(el[0],el[1])
-            return new Promise(function (resolve) {
-              setTimeout(resolve, interval);
-            });
-          });
-        });
+    //     var interval = 5500; // how much time should the delay between two iterations be (in milliseconds)?
+    //     var promise = Promise.resolve();
+    //     polylinePoints.forEach(function (el) {
+    //       promise = promise.then(function () {
+    //         console.log(el);
+    //         panView(el[0],el[1])
+    //         return new Promise(function (resolve) {
+    //           setTimeout(resolve, interval);
+    //         });
+    //       });
+    //     });
         
-        promise.then(function () {
-          console.log('Loop finished.');
-        });
+    //     promise.then(function () {
+    //       console.log('Loop finished.');
+    //     });
 
-    }, 8000);
+    // }, 8000);
 
   
 
