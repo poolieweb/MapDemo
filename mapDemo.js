@@ -6,6 +6,7 @@
         zoom: 16
     });
 
+    map.setCameraTiltDegrees(50);
     //Static location of the GPS device (Demo only in this POC)
     L.circle([53.5339, -2.2552], { color: 'red', radius: 25.0 }).addTo(map);
 
@@ -88,34 +89,34 @@
 
     L.marker([53.53634, -2.25992], { icon: myStageIcon }).addTo(map);
 
-    var poiApi = new WrldPoiApi("18ae0d05d0aafb494039a95baab0377f");
-    var markers = [];
+    // var poiApi = new WrldPoiApi("18ae0d05d0aafb494039a95baab0377f");
+    // var markers = [];
 
-    function displaySearchResults(success, results) {
-        map.closePopup();
-        if (success) {
-            results.forEach(function(result) {
-                var marker = L.marker([result["lat"], result["lon"]], {
-                   title: result["title"],
-                   iconKey: result["tags"]
-                }).addTo(map);
+    // function displaySearchResults(success, results) {
+    //     map.closePopup();
+    //     if (success) {
+    //         results.forEach(function(result) {
+    //             var marker = L.marker([result["lat"], result["lon"]], {
+    //                title: result["title"],
+    //                iconKey: result["tags"]
+    //             }).addTo(map);
 
-                markers.push(marker);
-            })
-        }
-        else {
-            map.openPopup("POI API query failed!", map.getCenter());
-        }
-    }
+    //             markers.push(marker);
+    //         })
+    //     }
+    //     else {
+    //         map.openPopup("POI API query failed!", map.getCenter());
+    //     }
+    // }
 
-    function searchPoisAroundClick(event) {
-        markers.forEach(function(marker) { marker.remove(); });
-        map.openPopup("Searching...", event.latlng);
+    // function searchPoisAroundClick(event) {
+    //     markers.forEach(function(marker) { marker.remove(); });
+    //     map.openPopup("Searching...", event.latlng);
 
-        var callback = displaySearchResults;
-        var options = { range: 500, number: 5 };
-        poiApi.searchTags([], event.latlng, callback, options);
-    };
+    //     var callback = displaySearchResults;
+    //     var options = { range: 500, number: 5 };
+    //     poiApi.searchTags([], event.latlng, callback, options);
+    // };
 
     // map.on("click", searchPoisAroundClick);
     
